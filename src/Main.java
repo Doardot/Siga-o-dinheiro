@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        String filePath = "Alest2/src/casoG50.txt"; // Caminho do arquivo
+        String filePath = "src/casoG50.txt"; // Caminho do arquivo
         Matriz matriz = new Matriz(filePath);
         matriz.exibirMatriz();
 
