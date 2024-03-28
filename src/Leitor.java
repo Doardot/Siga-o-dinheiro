@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Leitor {
-    public static String leitorArquivo(String filePath) {
+    public String leitorArquivo(String filePath) {
         StringBuilder conteudo = new StringBuilder();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
