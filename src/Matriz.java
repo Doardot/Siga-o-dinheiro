@@ -15,8 +15,6 @@ public class Matriz {
         int altura = Integer.parseInt(dimensoes[1]);
 
         char[][] matriz = new char[altura][largura];
-        // System.out.println("Largura: " + largura);
-        // System.out.println("Altura: " + altura);
 
         for (int i = 0; i < altura; i++) {
             String linha = linhas[i + 1]; // Começa da segunda linha após as dimensões
@@ -103,7 +101,7 @@ public class Matriz {
                     x++;
                 } else if (direction == Direction.LEFT) {
                     direction = Direction.UP;
-                    x++;
+                    x--;
                 } else if (direction == Direction.UP) {
                     direction = Direction.LEFT;
                 } else if (direction == Direction.DOWN) {
