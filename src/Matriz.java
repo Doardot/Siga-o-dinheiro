@@ -49,30 +49,39 @@ public class Matriz {
         int y = 0;
         Direction direction = Direction.RIGHT;
         boolean isEnd = false;
-    
+
         while (!isEnd) {
             char atual = matriz[x][y]; // Caractere atual
             System.out.println("Lendo posição: (" + x + ", " + y + ") -> Caractere: " + atual);
-    
+
             if (Character.isDigit(atual)) {
                 soma += Character.getNumericValue(atual);
             }
-    
-            // Implementação da lógica para o caractere "|"
-            /*if (atual == '|') {
-                if (x + 1 < matriz.length && matriz[x + 1][y] == '/') { // Verifica se há um "/" logo abaixo
-                    x--; // Se sim, move para cima
-                } else if (x + 1 < matriz.length && matriz[x + 1][y] == '\\') { // Verifica se há um "\" logo abaixo
-                    x++; // Se sim, move para baixo
-                }
-                // Se não, continue na mesma direção
-            }*/
 
-            //ta funcionando sem essa validação acima, acreidto que não precise tb pelo visto, apenas manipulei nos ifs. ta meio feio, mas ta funcionando pra ir pra cima
-            //acredito que so falte alguma manipulação certa ali no if tb a partir das linha 99 de quando for pra baixo
-            //oq ta acontecendo agora é, de fato, quando le o primeiro caractere que vai pra baixo, no caso, (14, 6), depois le o (15, 6) como esperado, mas fica voltando para
-            //o 14, como se tivesse ficando direction.UP e direction.DOWN realmente
-    
+            // Implementação da lógica para o caractere "|"
+            /*
+             * if (atual == '|') {
+             * if (x + 1 < matriz.length && matriz[x + 1][y] == '/') { // Verifica se há um
+             * "/" logo abaixo
+             * x--; // Se sim, move para cima
+             * } else if (x + 1 < matriz.length && matriz[x + 1][y] == '\\') { // Verifica
+             * se há um "\" logo abaixo
+             * x++; // Se sim, move para baixo
+             * }
+             * // Se não, continue na mesma direção
+             * }
+             */
+
+            // ta funcionando sem essa validação acima, acreidto que não precise tb pelo
+            // visto, apenas manipulei nos ifs. ta meio feio, mas ta funcionando pra ir pra
+            // cima
+            // acredito que so falte alguma manipulação certa ali no if tb a partir das
+            // linha 99 de quando for pra baixo
+            // oq ta acontecendo agora é, de fato, quando le o primeiro caractere que vai
+            // pra baixo, no caso, (14, 6), depois le o (15, 6) como esperado, mas fica
+            // voltando para
+            // o 14, como se tivesse ficando direction.UP e direction.DOWN realmente
+
             if (atual == '/') {
                 if (direction == Direction.RIGHT) {
                     direction = Direction.UP;
@@ -81,12 +90,13 @@ public class Matriz {
                     direction = Direction.DOWN;
                     x++;
                 } else if (direction == Direction.UP) {
-                    direction = Direction.RIGHT; //nao foi preciso atualizar o y nesses casos, pelo oq vi, dps tava atualizando duas vezes a partir da linha 99, nas validações
+                    direction = Direction.RIGHT; // nao foi preciso atualizar o y nesses casos, pelo oq vi, dps tava
+                                                 // atualizando duas vezes a partir da linha 99, nas validações
                 } else if (direction == Direction.DOWN) {
                     direction = Direction.LEFT;
                 }
             }
-    
+
             if (atual == '\\') {
                 if (direction == Direction.RIGHT) {
                     direction = Direction.DOWN;
@@ -100,37 +110,36 @@ public class Matriz {
                     direction = Direction.RIGHT;
                 }
             }
-    
+
             // Atualização das coordenadas de acordo com a direção
             if ((atual != '/' || atual != '\\') && direction == Direction.RIGHT) {
-                y++;
-                if (y >= matriz[0].length) { // Verifica se y ultrapassou a largura da matriz
-                    break; // Sai do loop se ultrapassou
+                y++; // Segue a direita se não for "/" ou "\"
+                if (y >= matriz[0].length) {
+                    break; // Atingiu o limite da direita
                 }
             } else if ((atual != '/' || atual != '\\') && direction == Direction.LEFT) {
-                y--;
-                if (y < 0) { // Verifica se y é menor que 0
-                    break; // Sai do loop se for menor que 0
+                y--; // Segue a esquerda se não for "/" ou "\"
+                if (y < 0) {
+                    break; // Atingiu o limite da esquerda
                 }
-            } else if (atual=='|' || (atual != '\\' && atual != '/') && direction == Direction.UP) {//logica de quando for para baixo ainda esta faltando acredito eu, implementar
+            } else if ((atual == '|' || atual != '\\' && atual != '/') && direction == Direction.UP) {
                 x--;
-                if (x < 0) { // Verifica se x é menor que 0
-                    break; // Sai do loop se for menor que 0
+                if (x < 0) {
+                    break;
                 }
-            } else if (atual=='|' || (atual != '\\' && atual != '/') && direction == Direction.DOWN) {
+            } else if ((atual == '|' || atual != '\\' && atual != '/') && direction == Direction.DOWN) {
                 x++;
-                if (x >= matriz.length) { // Verifica se x ultrapassou a altura da matriz
-                    break; // Sai do loop se ultrapassou
+                if (x >= matriz.length) {
+                    break;
                 }
             }
-    
+
             if (atual == '#') {
                 isEnd = true;
             }
         }
         return soma;
     }
-    
 
     public void exibirMatriz() {
         for (char[] x : matriz) {
