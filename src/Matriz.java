@@ -53,32 +53,40 @@ public class Matriz {
             System.out.println("Lendo posição: (" + x + ", " + y + ") -> Caractere: " + atual);
 
             if (Character.isDigit(atual)) {
-                soma += Character.getNumericValue(atual);
+                // Se o caractere atual é um dígito, leia todos os dígitos consecutivos
+                StringBuilder numStr = new StringBuilder();
+                numStr.append(atual);
+
+                // Verifique se há mais dígitos consecutivos na mesma direção
+                int nextX = x;
+                int nextY = y;
+                if (direction == Direction.RIGHT) {
+                    nextY++;
+                } else if (direction == Direction.LEFT) {
+                    nextY--;
+                } else if (direction == Direction.UP) {
+                    nextX--;
+                } else if (direction == Direction.DOWN) {
+                    nextX++;
+                }
+
+                while (nextX >= 0 && nextX < matriz.length && nextY >= 0 && nextY < matriz[0].length &&
+                        Character.isDigit(matriz[nextX][nextY])) {
+                    numStr.append(matriz[nextX][nextY]);
+                    if (direction == Direction.RIGHT) {
+                        nextY++;
+                    } else if (direction == Direction.LEFT) {
+                        nextY--;
+                    } else if (direction == Direction.UP) {
+                        nextX--;
+                    } else if (direction == Direction.DOWN) {
+                        nextX++;
+                    }
+                }
+
+                // Converta a sequência de dígitos em um número inteiro e adicione-o à soma
+                soma += Integer.parseInt(numStr.toString());
             }
-
-            // Implementação da lógica para o caractere "|"
-            /*
-             * if (atual == '|') {
-             * if (x + 1 < matriz.length && matriz[x + 1][y] == '/') { // Verifica se há um
-             * "/" logo abaixo
-             * x--; // Se sim, move para cima
-             * } else if (x + 1 < matriz.length && matriz[x + 1][y] == '\\') { // Verifica
-             * se há um "\" logo abaixo
-             * x++; // Se sim, move para baixo
-             * }
-             * // Se não, continue na mesma direção
-             * }
-             */
-
-            // ta funcionando sem essa validação acima, acreidto que não precise tb pelo
-            // visto, apenas manipulei nos ifs. ta meio feio, mas ta funcionando pra ir pra
-            // cima
-            // acredito que so falte alguma manipulação certa ali no if tb a partir das
-            // linha 99 de quando for pra baixo
-            // oq ta acontecendo agora é, de fato, quando le o primeiro caractere que vai
-            // pra baixo, no caso, (14, 6), depois le o (15, 6) como esperado, mas fica
-            // voltando para
-            // o 14, como se tivesse ficando direction.UP e direction.DOWN realmente
 
             if (atual == '/') {
                 if (direction == Direction.RIGHT) {
@@ -136,6 +144,7 @@ public class Matriz {
                 isEnd = true;
             }
         }
+
         return soma;
     }
 
