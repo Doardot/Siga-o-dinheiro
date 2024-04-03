@@ -26,7 +26,6 @@ public class Matriz {
         return matriz;
     }
 
-    // Método "comecaAqui"
     public int encontrarHifenEsquerda() {
         for (int i = 0; i < matriz.length; i++) {
             if (matriz[i][0] == '-') {
@@ -38,54 +37,31 @@ public class Matriz {
 
     public enum Direction {
         UP, DOWN, LEFT, RIGHT
-        // UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT;
     }
 
     public int percorrerCaminho(int xInicial) {
         int soma = 0;
         int x = xInicial;
         int y = 0;
+        int novoNum = 0;
         Direction direction = Direction.RIGHT;
         boolean isEnd = false;
+        StringBuilder numStr = new StringBuilder();
 
         while (!isEnd) {
             char atual = matriz[x][y]; // Caractere atual
-            System.out.println("Lendo posição: (" + x + ", " + y + ") -> Caractere: " + atual);
+            // System.out.println("Lendo posição: (" + x + ", " + y + ") -> Caractere: " +
+            // atual); -> Debug
 
             if (Character.isDigit(atual)) {
-                // Se o caractere atual é um dígito, leia todos os dígitos consecutivos
-                StringBuilder numStr = new StringBuilder();
                 numStr.append(atual);
-
-                // Verifique se há mais dígitos consecutivos na mesma direção
-                int nextX = x;
-                int nextY = y;
-                if (direction == Direction.RIGHT) {
-                    nextY++;
-                } else if (direction == Direction.LEFT) {
-                    nextY--;
-                } else if (direction == Direction.UP) {
-                    nextX--;
-                } else if (direction == Direction.DOWN) {
-                    nextX++;
-                }
-
-                while (nextX >= 0 && nextX < matriz.length && nextY >= 0 && nextY < matriz[0].length &&
-                        Character.isDigit(matriz[nextX][nextY])) {
-                    numStr.append(matriz[nextX][nextY]);
-                    if (direction == Direction.RIGHT) {
-                        nextY++;
-                    } else if (direction == Direction.LEFT) {
-                        nextY--;
-                    } else if (direction == Direction.UP) {
-                        nextX--;
-                    } else if (direction == Direction.DOWN) {
-                        nextX++;
-                    }
-                }
-
-                // Converta a sequência de dígitos em um número inteiro e adicione-o à soma
-                soma += Integer.parseInt(numStr.toString());
+                novoNum = Integer.parseInt(numStr.toString()); // Transforma a string em número
+                // System.out.println(numStr.toString());
+            } else {
+                // System.out.println(novoNum);
+                soma += novoNum;
+                novoNum = 0;
+                numStr.setLength(0); // Limpa a string
             }
 
             if (atual == '/') {
@@ -96,8 +72,7 @@ public class Matriz {
                     direction = Direction.DOWN;
                     x++;
                 } else if (direction == Direction.UP) {
-                    direction = Direction.RIGHT; // nao foi preciso atualizar o y nesses casos, pelo oq vi, dps tava
-                                                 // atualizando duas vezes a partir da linha 99, nas validações
+                    direction = Direction.RIGHT;
                 } else if (direction == Direction.DOWN) {
                     direction = Direction.LEFT;
                 }
@@ -147,13 +122,14 @@ public class Matriz {
 
         return soma;
     }
-
-    public void exibirMatriz() {
-        for (char[] x : matriz) {
-            for (char elemento : x) {
-                System.out.print(elemento + " ");
-            }
-            System.out.println();
-        }
-    }
+    /*
+     * public void exibirMatriz() {
+     * for (char[] x : matriz) {
+     * for (char elemento : x) {
+     * System.out.print(elemento + " ");
+     * }
+     * System.out.println();
+     * }
+     * }
+     */
 }
