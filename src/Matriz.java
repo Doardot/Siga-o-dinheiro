@@ -9,10 +9,11 @@ public class Matriz {
     }
 
     public char[][] transformarEmMatriz(String conteudo) {
-        String[] linhas = conteudo.trim().split("\n"); // Divide o conteúdo em linhas
+        String[] linhas = conteudo.split("\n"); // Divide o conteúdo em linhas
         String[] dimensoes = linhas[0].split("\\s+");
         int largura = Integer.parseInt(dimensoes[0]);
         int altura = Integer.parseInt(dimensoes[1]);
+        //System.out.println("Largura: " + largura + " Altura: " + altura);
 
         char[][] matriz = new char[altura][largura];
 
