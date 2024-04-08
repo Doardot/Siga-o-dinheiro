@@ -15,7 +15,6 @@ public class Leitor {
             e.printStackTrace();
         }
 
-        // System.out.println(conteudo.toString());
         return conteudo.toString();
     }
 }
