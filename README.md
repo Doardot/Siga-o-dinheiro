@@ -19,7 +19,9 @@ siga as instruções de instalação.
 - Eduardo Monteiro Tavares 
 - <a href="mailto:eduardo.tavares002@edu.pucrs.br">E-mail</a></li>
 - <a href="https://github.com/Doardot">GitHub</a></li>
+
 </br>
+
 - Murilo Machado da Silva
 - <a href="mailto:murilo.012@edu.pucrs.br">E-mail</a></li>
 - <a href="https://github.com/mmachado17">GitHub</a></li>
