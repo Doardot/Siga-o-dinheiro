@@ -1,18 +1,25 @@
-## Getting Started
+## Siga o dinheiro 💸
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+No infortúnio evento de um grande assalto ao banco, bandidos realizaram uma fuga pela cidade, deixando notas de dinheiro caírem pelo caminho, a polícia precisa seguir a quadrilha e recolher as notas deixadas para trás. Para isso, a equipe de perícia tracejou múltiplos mapas, que infelizmente acabaram por ser longos e confusos. O presente trabalho consiste em desenvolver um algoritmo capaz de percorrer o caminho descrito nos mapas, contabilizando quanto dinheiro foi recolhido no final da perseguição. 
 
-## Folder Structure
+## Como executar
 
-The workspace contains two folders by default, where:
+Para executar o projeto, é necessário ter o Java instalado na máquina.
+Caso não tenha, acesse o [site oficial do Java](https://www.java.com/pt-BR/download/) e
+siga as instruções de instalação.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- Clone o repositório.
+- Abra o projeto na IDE da sua preferência.
+- Caso esteja utilizando o Visual Studio Code, baixe a extensão "Java Extension Pack".
+- Caso esteja a utilizar o IntelliJ IDEA, não será necessário baixar nenhuma extensão.
+- Execute o arquivo "Main.java" que está localizado na pasta "src".
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Autores
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- Eduardo Monteiro Tavares 
+- <a href="mailto:eduardo.tavares002@edu.pucrs.br">E-mail</a></li>
+- <a href="https://github.com/Doardot">GitHub</a></li>
+</br>
+- Murilo Machado da Silva
+- <a href="mailto:murilo.012@edu.pucrs.br">E-mail</a></li>
+- <a href="https://github.com/mmachado17">GitHub</a></li>
